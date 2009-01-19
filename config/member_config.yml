@@ -1,0 +1,13 @@
+blogUrl:
+  _attributes:
+    caption: "BlogのURL設定"
+  blog_url:
+    Name:       "blog_url"
+    Caption:    "BlogのURL"
+    FormType:   "input"
+    ValueType:  "blog_url"
+    IsRegist:   true
+    IsConfig:   true
+    IsUnique:   false
+    IsRequired: false
+    IsConfirm:  false

@@ -1,0 +1,14 @@
+blogHomeFriend:
+  component: [blog, blogHomeFriend]
+  config:
+    size:
+      Name:        "size"
+      ValueType:   "int"
+      Default:     10
+blogHomeUser:
+  component: [blog, blogHomeUser]
+  config:
+    size:
+      Name:        "size"
+      ValueType:   "int"
+      Default:     10
