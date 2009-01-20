@@ -19,6 +19,20 @@
 class blogActions extends sfActions
 {
  /**
+  * Executes index action
+  *
+  * @param sfRequest $request A request object
+  */
+  public function executeIndex($request)
+  {
+    $this->blogList = BlogPeer::getBlogListOfAllMember();
+    if (!count($this->blogList))
+    {
+      return sfView::ALERT;
+    }
+  }
+
+ /**
   * Executes friend action
   *
   * @param sfRequest $request A request object

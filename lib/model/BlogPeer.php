@@ -173,10 +173,30 @@ class BlogPeer
     
     return $list;
   }
+
   public static function getBlogListOfMember($member_id, $size=20, $limitTitle = false)
   {
     $list = array();
     self::getBlogListByMemberId($member_id, $list);
+    $list = self::sortBlogList($list, $size);
+    if ($limitTitle)
+    {
+      self::limitBlogTitle($list);
+    }
+    
+    return $list;
+  }
+
+  public static function getBlogListOfAllMember($size=20, $limitTitle = false)
+  {
+    $c = new Criteria();
+    $c->addSelectColumn(MemberPeer::ID);
+    $stmt = MemberPeer::doSelectStmt($c);
+    $list = array();
+    while($id = $stmt->fetchColumn(0))
+    {
+      self::getBlogListByMemberId($id, $list);
+    }
     $list = self::sortBlogList($list, $size);
     if ($limitTitle)
     {
