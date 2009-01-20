@@ -26,11 +26,10 @@ class BlogPeer
 
   public static function getFeedType($root)
   {
-    if ($root == false)
+    if (!$root)
     {
       return false;
     }
-
     switch (strtolower($root->getName()))
     {
       case "rdf":
