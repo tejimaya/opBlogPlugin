@@ -8,4 +8,4 @@ profileSuccess:
       template: [blog, blogProfile]
       parts: [profile]
       is_component: true
-      target: [lastRaw]
+      target: [lastRow]
