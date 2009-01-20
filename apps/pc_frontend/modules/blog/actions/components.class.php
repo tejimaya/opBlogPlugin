@@ -10,19 +10,18 @@ class blogComponents extends sfComponents
 {
   public function executeBlogHomeFriend()
   {
-    $this->blogList = BlogPeer::getBlogListByFriend($this->getUser()->getMemberId());
+    $this->blogList = BlogPeer::getBlogListOfFriend($this->getUser()->getMemberId(), 10, true);
   }
 
   public function executeBlogHomeUser()
   {
     $this->member = $this->getUser()->getMember();
-    $this->blogList = array();
-    BlogPeer::getBlogListByMemberId($this->getUser()->getMemberId(), $this->blogList);
+    $this->blogList = BlogPeer::getBlogListOfMember($this->getUser()->getMemberId(), 10, true);
   }
 
   public function executeBlogProfile($request)
   {
-    $this->blogList = array();
-    BlogPeer::getBlogListByMemberId($this->id, $this->blogList);
+    $this->member = MemberPeer::retrieveByPk($this->id);
+    $this->blogList = BlogPeer::getBlogListOfMember($this->id, 10, true);
   }
 }

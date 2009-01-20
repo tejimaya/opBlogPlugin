@@ -25,7 +25,7 @@ class blogActions extends sfActions
   */
   public function executeFriend($request)
   {
-    $this->blogList = BlogPeer::getBlogListByFriend($this->getUser()->getMemberId(), 20);
+    $this->blogList = BlogPeer::getBlogListOfFriend($this->getUser()->getMemberId());
     if (!count($this->blogList))
     {
       return sfView::ALERT;
@@ -40,8 +40,7 @@ class blogActions extends sfActions
   public function executeUser($request)
   {
     $this->member = $this->getUser()->getMember();
-    $this->blogList = array();
-    BlogPeer::getBlogListByMemberId($this->getUser()->getMemberId(), $this->blogList, 20);
+    $this->blogList = BlogPeer::getBlogListOfMember($this->getUser()->getMemberId());
     if (!count($this->blogList))
     {
       return sfView::ALERT;
@@ -60,8 +59,7 @@ class blogActions extends sfActions
     {
       return sfView::ERROR;
     }
-    $this->blogList = array();
-    BlogPeer::getBlogListByMemberId($this->id, $this->blogList, 20);
+    $this->blogList = BlogPeer::getBlogListOfMember($this->id);
     if (!count($this->blogList))
     {
       return sfView::ALERT;

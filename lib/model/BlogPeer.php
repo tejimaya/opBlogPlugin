@@ -124,7 +124,7 @@ class BlogPeer
     );
   }
 
-  public static function sortBlogList(&$list, $size = 10)
+  public static function sortBlogList(&$list, $size = 20)
   {
     foreach ($list as $aKey => $a)
     {
@@ -145,7 +145,15 @@ class BlogPeer
     return array_splice($list, 0, $size);
   }
 
-  public static function getBlogListByFriend($member_id)
+  public static function limitBlogTitle(&$list)
+  {
+    foreach($list as &$res)
+    {
+      $res['title'] = mb_strcut($res['title'], 0, 30);
+    }
+  }
+
+  public static function getBlogListOfFriend($member_id, $size=20, $limitTitle = false)
   {
     $c = new Criteria();
     $c->add(MemberRelationshipPeer::MEMBER_ID_TO, $member_id);
@@ -157,6 +165,24 @@ class BlogPeer
     {
       self::getBlogListByMemberId($id, $list);
     }
-    return self::sortBlogList($list);
+    $list = self::sortBlogList($list, $size);
+    if ($limitTitle)
+    {
+      self::limitBlogTitle($list);
+    }
+    
+    return $list;
+  }
+  public static function getBlogListOfMember($member_id, $size=20, $limitTitle = false)
+  {
+    $list = array();
+    self::getBlogListByMemberId($member_id, $list);
+    $list = self::sortBlogList($list, $size);
+    if ($limitTitle)
+    {
+      self::limitBlogTitle($list);
+    }
+    
+    return $list;
   }
 }
