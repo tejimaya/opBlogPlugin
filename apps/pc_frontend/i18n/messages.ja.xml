@@ -18,6 +18,18 @@
       <source>m/d</source>
       <target>m月d日</target>
       </trans-unit>
-     </body>
+      <trans-unit id="5">
+      <source>The member id is invalid</source>
+      <target>メンバーIDが無効です</target>
+      </trans-unit>
+      <trans-unit id="6">
+      <source>The blog is none</source>
+      <target>ブログがありません</target>
+      </trans-unit>
+      <trans-unit id="7">
+      <source>More info</source>
+      <target>もっと見る</target>
+      </trans-unit>
+    </body>
   </file>
 </xliff>

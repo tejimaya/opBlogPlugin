@@ -1,11 +1,11 @@
-<div id="<?php echo $id ?>" class="dparts partsNews">
+<div id="<?php echo $id ?>" class="dparts box">
 <div class="parts">
 
 <div class="partsHeading">
 <h3><?php echo $option['title'] ?></h3>
 </div>
 
-<div class="block">
+<div class="block"><div class="body">
 
 <table>
 <tbody>
@@ -33,7 +33,7 @@ echo '<a href="' . $res['link_to_external'] . '">' . $res['title'] . '</a>';
 </tbody>
 </table>
 
-</div>
+</div></div>
 
 </div></div>
 

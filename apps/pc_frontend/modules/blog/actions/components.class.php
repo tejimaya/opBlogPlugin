@@ -20,8 +20,9 @@ class blogComponents extends sfComponents
     BlogPeer::getBlogListByMemberId($this->getUser()->getMemberId(), $this->blogList);
   }
 
-  public function executeBlogProfile()
+  public function executeBlogProfile($request)
   {
-    $this->blogList = BlogPeer::getBlogListByMemberId($this->getRequest()->getParameter('id'));
+    $this->blogList = array();
+    BlogPeer::getBlogListByMemberId($this->id, $this->blogList);
   }
 }
