@@ -1,4 +1,4 @@
-HomeWidget:
+Gadget:
   blog_home_friend:
     type: "contents"
     name: "blogHomeFriend"
