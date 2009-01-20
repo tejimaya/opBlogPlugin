@@ -6,7 +6,7 @@ blogUrl:
     Caption:    "BlogのURL"
     FormType:   "input"
     ValueType:  "blog_url"
-    IsRegist:   true
+    IsRegist:   false
     IsConfig:   true
     IsUnique:   false
     IsRequired: false

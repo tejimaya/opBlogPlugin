@@ -25,6 +25,7 @@ class MemberConfigBlogUrlForm extends MemberConfigForm
 
     if ($name === 'blog_url')
     {
+      $this->widgetSchema['blog_url']->setAttributes(array('size' => 69));
       $this->mergePostValidator(new sfValidatorCallback(array(
         'callback'  => array($this, 'validate'),
       )));
@@ -35,10 +36,13 @@ class MemberConfigBlogUrlForm extends MemberConfigForm
 
   public function validate($validator, $value)
   {
-    $root = BlogPeer::getXmlByUrl($value['blog_url']);
-    if (!BlogPeer::getFeedType($root))
+    if ($value['blog_url'] !== "")
     {
-      throw new sfValidatorError($validator, 'URL is invalid');
+      $root = BlogPeer::getXmlByUrl($value['blog_url']);
+      if (!BlogPeer::getFeedType($root))
+      {
+        throw new sfValidatorError($validator, 'URL is invalid');
+      }
     }
     return $value;
   }
