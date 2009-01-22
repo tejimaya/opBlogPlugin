@@ -2,7 +2,7 @@
 <div class="parts">
 
 <div class="partsHeading">
-<h3><?php echo $option['title'] ?></h3>
+<h3><?php echo $options['title'] ?></h3>
 </div>
 
 <div class="block"><div class="body">
@@ -10,23 +10,23 @@
 <table>
 <tbody>
 <ul class="articleList">
-<?php foreach($option['list'] as $res): ?>
+<?php foreach($options['list'] as $res): ?>
 <li>
 <span class="date"><?php echo date( __('m/d'), $res['date']) ?></span>
 <?php image_tag('articleList_maker.gif', array('alf' => '')) ?> 
 <?php
 echo '<a href="' . $res['link_to_external'] . '">' . $res['title'] . '</a>';
 ?>
-<?php if ($option['showName']): ?>
+<?php if ($options['showName']): ?>
 (<?php echo $res['name'] ?>)
 <?php endif ?>
 </li>
 <?php endforeach; ?>
 </ul>
 
-<?php if (isset($option['moreInfo'])): ?>
+<?php if (isset($options['moreInfo'])): ?>
 <div class="moreInfo"><ul class="moreInfo"><li>
-<?php echo link_to(__('More info'), $option['moreInfo']) ?>
+<?php echo link_to(__('More info'), $options['moreInfo']) ?>
 </li></ul></div>
 <?php endif; ?>
 
