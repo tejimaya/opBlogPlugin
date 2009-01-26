@@ -1,6 +1,3 @@
-homeSuccess:
-  stylesheets: [/opBlogPlugin/css/blog]
-
 profileSuccess:
   stylesheets: [/opBlogPlugin/css/blog]
   customize:
