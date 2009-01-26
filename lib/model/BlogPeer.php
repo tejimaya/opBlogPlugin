@@ -10,19 +10,6 @@
 
 class BlogPeer
 {
-  public static function getPluginByName($name)
-  {
-    $pluginManager = new opInstalledPluginManager();
-    $plugins = $pluginManager->getInstalledPlugins();
-    foreach ($plugins as $plugin)
-    {
-      if ($plugin->getName() === $name)
-      {
-        return true;
-      }
-    }
-    return false;
-  }
   public static function getXmlByUrl($url)
   {
     if (is_null($url) || $url === '')
