@@ -54,7 +54,12 @@ class BlogPeer
   public static function getBlogListByMemberId($member_id, &$list)
   {
     $member = MemberPeer::retrieveByPk($member_id);
+    if (!$member || !$member->getIsActive())
+    {
+      return;
+    }
     $root = self::getXmlByUrl($member->getConfig('blog_url'));
+
 
     $feedType = BlogPeer::getFeedType($root);
 
