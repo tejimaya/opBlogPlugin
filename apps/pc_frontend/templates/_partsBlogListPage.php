@@ -1,11 +1,9 @@
-<div id="<?php echo $id ?>" class="dparts partsNewsPager">
+<div id="<?php echo $id ?>" class="dparts recentList">
 <div class="parts">
 
 <div class="partsHeading">
 <h3><?php echo $options['title'] ?></h3>
 </div>
-
-<div class="block">
 
 <?php foreach ($options['list'] as $res): ?>
 <dl>
@@ -18,8 +16,6 @@
 </dd>
 </dl>
 <?php endforeach; ?>
-</div>
-
 </div>
 
 </div></div>
