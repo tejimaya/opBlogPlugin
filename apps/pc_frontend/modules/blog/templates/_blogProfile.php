@@ -2,7 +2,8 @@
 
 <tr>
 <th><?php echo __('最新Blog') ?></th>
-<td>
+
+<td id="blogProfile">
 
 <ul class="articleList">
 <?php foreach($blogList as $res): ?>
