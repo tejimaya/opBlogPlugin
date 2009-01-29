@@ -41,7 +41,8 @@ class MemberConfigBlogUrlForm extends MemberConfigForm
       $root = BlogPeer::getXmlByUrl($value['blog_url']);
       if (!BlogPeer::getFeedType($root))
       {
-        throw new sfValidatorError($validator, 'invalid');
+        $error = new sfValidatorError($validator, 'URL is invalid.');
+        throw new sfValidatorErrorSchema($validator, array('blog_url' => $error));
       }
     }
     return $value;

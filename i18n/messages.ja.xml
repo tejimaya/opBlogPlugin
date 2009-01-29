@@ -3,8 +3,8 @@
   <file orginal="global" source-language="en" datatype="plaintext">
     <body>
       <trans-unit id="1">
-        <source>URL is invalid</source>
-        <target>URLが無効です</target>
+        <source>URL is invalid.</source>
+        <target>URLが無効です。</target>
       </trans-unit>
       <trans-unit id="2">
         <source>Blog URL Configuration</source>
