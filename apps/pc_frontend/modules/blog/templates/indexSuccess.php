@@ -4,7 +4,7 @@ include_parts(
   'BlogListPage',
   'blogFriend',
   array(
-    'title' => __('Friends newest blog'),
+    'title' => __('Newest blog'),
     'list' => $blogList,
     'showName' => true
   )
