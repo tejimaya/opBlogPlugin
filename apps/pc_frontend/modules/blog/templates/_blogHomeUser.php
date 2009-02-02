@@ -4,7 +4,7 @@ if (count($blogList))
 {
   include_parts(
     'BlogListBox',
-    'blogHomeUser',
+    'blogHomeUser_'.$gadget->getId(),
     array(
       'title' => sprintf(__('Newest blog of %s'), $member->getName()),
       'list' => $blogList,
