@@ -21,11 +21,11 @@ class blogActions extends sfActions
  /**
   * Executes index action
   *
-  * @param sfRequest $request A request object
+  * @param sfRequest $request A request t
   */
   public function executeIndex($request)
   {
-    $this->blogList = BlogPeer::getBlogListOfAllMember();
+    $this->blogList = BlogPeer::getBlogListOfAllMember(sfConfig::get('app_blog_action_size'));
     if (!count($this->blogList))
     {
       return sfView::ALERT;
@@ -39,7 +39,10 @@ class blogActions extends sfActions
   */
   public function executeFriend($request)
   {
-    $this->blogList = BlogPeer::getBlogListOfFriend($this->getUser()->getMemberId());
+    $this->blogList = BlogPeer::getBlogListOfFriend(
+      $this->getUser()->getMemberId(),
+      sfConfig::get('app_blog_action_size')
+    );
     if (!count($this->blogList))
     {
       return sfView::ALERT;
@@ -54,7 +57,10 @@ class blogActions extends sfActions
   public function executeUser($request)
   {
     $this->member = $this->getUser()->getMember();
-    $this->blogList = BlogPeer::getBlogListOfMember($this->getUser()->getMemberId());
+    $this->blogList = BlogPeer::getBlogListOfMember(
+      $this->getUser()->getMemberId(),
+      sfConfig::get('app_blog_action_size')
+    );
     if (!count($this->blogList))
     {
       return sfView::ALERT;
@@ -73,7 +79,10 @@ class blogActions extends sfActions
     {
       return sfView::ERROR;
     }
-    $this->blogList = BlogPeer::getBlogListOfMember($this->id);
+    $this->blogList = BlogPeer::getBlogListOfMember(
+      $this->id,
+      sfConfig::get('app_blog_action_size')
+    );
     if (!count($this->blogList))
     {
       return sfView::ALERT;

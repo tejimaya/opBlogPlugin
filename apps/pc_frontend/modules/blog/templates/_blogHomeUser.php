@@ -7,7 +7,7 @@ if (count($blogList))
     'blogHomeUser_'.$gadget->getId(),
     array(
       'title' => sprintf(__('Newest blog of %s'), $member->getName()),
-      'list' => $blogList,
+      'list' => $sf_data->getRaw('blogList'),
       'showName' => false,
       'moreInfo' => 'blog/user'
     )

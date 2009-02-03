@@ -5,7 +5,7 @@ include_parts(
   'blogIndex',
   array(
     'title' => __('Newest blog'),
-    'list' => $blogList,
+    'list' => $sf_data->getRaw('blogList'),
     'showName' => true
   )
 );

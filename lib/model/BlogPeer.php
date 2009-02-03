@@ -10,45 +10,32 @@
 
 class BlogPeer
 {
-  public static function getXmlByUrl($url)
+  public static function getFeedByUrl($url)
   {
-    if (is_null($url) || $url === '')
+    if (is_null($url))
     {
       return false;
     }
-    $root = @simplexml_load_file($url);
-    if (!$root)
+    $feed = new SimplePie();
+    $dir = sfConfig::get('sf_app_cache_dir') . '/plugins';
+    if (!file_exists($dir))
+    {
+      mkdir($dir);
+    }
+    $dir .= '/opBlogPlugin';
+    if (!file_exists($dir))
+    {
+      mkdir($dir);
+    }
+    $feed->set_cache_location($dir);
+    $feed->set_feed_url($url);
+    if(!@$feed->init())
     {
       return false;
     }
-    return $root;
-  }
+    $feed->handle_content_type();
 
-  public static function getFeedType($root)
-  {
-    if (!$root)
-    {
-      return false;
-    }
-    switch (strtolower($root->getName()))
-    {
-      case "rdf":
-        $feedType = "rdf";
-        // rss0.8, rss1.0
-        break;
-      case "rss":
-        $feedType = "rss";
-        // rss2.0
-        break;
-      case "feed":
-        $feedType = "atom";
-        // atom
-        break;
-      default:
-        $feedType = false;
-        break;
-    }
-    return $feedType;
+    return $feed;
   }
 
   public static function getBlogListByMemberId($member_id, &$list)
@@ -58,64 +45,21 @@ class BlogPeer
     {
       return;
     }
-    $root = self::getXmlByUrl($member->getConfig('blog_url'));
 
-
-    $feedType = BlogPeer::getFeedType($root);
-
-    switch ($feedType)
+    $feed = self::getFeedByUrl($member->getConfig('blog_url'));
+    if (!$feed)
     {
-    case 'rdf':
-      self::addBlogFromRdf($member, $root, $list);
-      break; 
-    case 'rss':
-      self::addBlogFromRss($member, $root, $list);
-      break;
-    case 'atom':
-      self::addBlogFromAtom($member, $root, $list);
-      break;
-    default:
-      break;
+      return;
     }
-  }
 
-  protected static function addBlogFromRdf(&$member, &$root, &$list)
-  {
-    foreach ($root->item as $item)
-    {
-      $dc = $item->children('http://purl.org/dc/elements/1.1/');
-      $list[] = self::setBlog(
-        strtotime(strval($dc->date)),
-        strval($item->title),
-        strval($item->link),
-        $member->getName()
-      );
-    }
-  }
-
-  protected static function addBlogFromRss(&$member, &$root, &$list)
-  {
-    foreach ($root->channel->item as $item)
+    foreach ($feed->get_items() as $item)
     {
       $list[] = self::setBlog(
-        strtotime(strval($item->pubDate)),
-        strval($item->title),
-        strval($item->link),
+        strtotime(@$item->get_date()),
+        @$item->get_title(),
+        @$item->get_link(),
         $member->getName()
-      );
-    }
-  }
-
-  protected static function addBlogFromAtom(&$member, &$root, &$list)
-  {
-    foreach ($root->entry as $entry)
-    {
-      $list[] = self::setBlog(
-        strtotime(strval($entry->published)),
-        strval($entry->title),
-        strval($entry->link),
-        $member->getName()
-      );
+      ); 
     }
   }
 
@@ -123,7 +67,7 @@ class BlogPeer
   {
     return array(
       'date' => $date,
-      'title' => $title,
+      'title' => htmlspecialchars_decode($title),
       'link_to_external' => $link,
       'name' => $name
     );
@@ -158,7 +102,7 @@ class BlogPeer
     }
   }
 
-  public static function getBlogListOfFriend($member_id, $size=20, $limitTitle = false)
+  public static function getBlogListOfFriend($member_id, $size = 20, $limitTitle = false)
   {
     $c = new Criteria();
     $c->add(MemberRelationshipPeer::MEMBER_ID_TO, $member_id);
@@ -179,7 +123,7 @@ class BlogPeer
     return $list;
   }
 
-  public static function getBlogListOfMember($member_id, $size=20, $limitTitle = false)
+  public static function getBlogListOfMember($member_id, $size = 20, $limitTitle = false)
   {
     $list = array();
     self::getBlogListByMemberId($member_id, $list);
@@ -192,7 +136,7 @@ class BlogPeer
     return $list;
   }
 
-  public static function getBlogListOfAllMember($size=20, $limitTitle = false)
+  public static function getBlogListOfAllMember($size = 20, $limitTitle = false)
   {
     $c = new Criteria();
     $c->addSelectColumn(MemberPeer::ID);

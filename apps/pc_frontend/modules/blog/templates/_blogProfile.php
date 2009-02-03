@@ -6,7 +6,7 @@
 <td id="blogProfile">
 
 <ul class="articleList">
-<?php foreach($blogList as $res): ?>
+<?php foreach($sf_data->getRaw('blogList') as $res): ?>
 <li>
 <span class="date"><?php echo date( __('m/d'), $res['date']) ?></span>
 <?php image_tag('articleList_maker.gif', array('alf' => '')) ?>

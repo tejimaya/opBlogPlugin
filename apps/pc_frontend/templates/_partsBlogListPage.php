@@ -5,7 +5,7 @@
 <h3><?php echo $options['title'] ?></h3>
 </div>
 
-<?php foreach ($options['list'] as $res): ?>
+<?php foreach ($options->getRaw('list') as $res): ?>
 <dl>
 <dt><?php echo date( __('Y/m/d H:i'), $res['date']) ?></dt>
 <dd>

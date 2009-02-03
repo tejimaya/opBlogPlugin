@@ -8,7 +8,7 @@
 <div class="block">
 
 <ul class="articleList">
-<?php foreach($options['list'] as $res): ?>
+<?php foreach($options->getRaw('list') as $res): ?>
 <li>
 <span class="date"><?php echo date( __('m/d'), $res['date']) ?></span>
 <?php image_tag('articleList_maker.gif', array('alf' => '')) ?> 
