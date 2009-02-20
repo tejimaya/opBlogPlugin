@@ -16,11 +16,15 @@ class BlogPeer
     {
       return false;
     }
+    $old = umask(0);
     $feed = new SimplePie();
     $dir = sfConfig::get('sf_app_cache_dir') . '/plugins';
     if (!file_exists($dir))
     {
-      mkdir($dir);
+      if (!@mkdir($dir, 0777, true))
+      {
+        throw new Exception(sprintf('Could not create directory "%s"', $dir));
+      }
     }
     $dir .= '/opBlogPlugin';
     if (!file_exists($dir))
@@ -30,6 +34,7 @@ class BlogPeer
         throw new Exception(sprintf('Could not create directory "%s"', $dir));
       }
     }
+    umask($old);
     $feed->set_cache_location($dir);
     $feed->set_feed_url($url);
     if(!@$feed->init())
