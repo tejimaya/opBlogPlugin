@@ -25,7 +25,10 @@ class BlogPeer
     $dir .= '/opBlogPlugin';
     if (!file_exists($dir))
     {
-      mkdir($dir);
+      if (!@mkdir($dir, 0777, true))
+      {
+        throw new Exception(sprintf('Could not create directory "%s"', $dir));
+      }
     }
     $feed->set_cache_location($dir);
     $feed->set_feed_url($url);
