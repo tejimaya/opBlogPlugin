@@ -38,7 +38,7 @@ class MemberConfigBlogUrlForm extends MemberConfigForm
   {
     if ($value['blog_url'] !== "")
     {
-      $root = BlogPeer::getFeedByUrl($value['blog_url']);
+      $root = opBlogPlugin::getFeedByUrl($value['blog_url']);
       if (!$root)
       {
         $error = new sfValidatorError($validator, 'URL is invalid.');

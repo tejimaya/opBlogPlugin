@@ -16,6 +16,5 @@
 </dd>
 </dl>
 <?php endforeach; ?>
-</div>
 
 </div></div>

@@ -8,9 +8,9 @@
  * file and the NOTICE file that were distributed with this source code.
  */
 
-class BlogPeer
+class opBlogPlugin
 {
-  public static function getFeedByUrl($url)
+  static function getFeedByUrl($url)
   {
     if (is_null($url))
     {
@@ -46,9 +46,9 @@ class BlogPeer
     return $feed;
   }
 
-  public static function getBlogListByMemberId($member_id, &$list)
+  static function getBlogListByMemberId($member_id, &$list)
   {
-    $member = MemberPeer::retrieveByPk($member_id);
+    $member = Doctrine::getTable('Member')->find($member_id);
     if (!$member || !$member->getIsActive())
     {
       return;
@@ -71,7 +71,7 @@ class BlogPeer
     }
   }
 
-  protected static function setBlog($date, $title, $link, $name)
+  static function setBlog($date, $title, $link, $name)
   {
     return array(
       'date' => $date,
@@ -81,7 +81,7 @@ class BlogPeer
     );
   }
 
-  public static function sortBlogList(&$list, $size = 20)
+  static function sortBlogList(&$list, $size = 20)
   {
     foreach ($list as $aKey => $a)
     {
@@ -102,7 +102,7 @@ class BlogPeer
     return array_splice($list, 0, $size);
   }
 
-  public static function limitBlogTitle(&$list)
+  static function limitBlogTitle(&$list)
   {
     foreach($list as &$res)
     {
@@ -110,28 +110,27 @@ class BlogPeer
     }
   }
 
-  public static function getBlogListOfFriend($member_id, $size = 20, $limitTitle = false)
+  static function getBlogListOfFriends($member_id, $size = 20, $limitTitle = false)
   {
-    $c = new Criteria();
-    $c->add(MemberRelationshipPeer::MEMBER_ID_TO, $member_id);
-    $c->add(MemberRelationshipPeer::IS_FRIEND, true);
-    $c->addSelectColumn(MemberRelationshipPeer::MEMBER_ID_FROM);
-    $stmt = MemberRelationshipPeer::doSelectStmt($c);
+    $member = Doctrine::getTable('Member')->find($member_id);
+    $friendList = $member->getFriends();
+
     $list = array();
-    while($id = $stmt->fetchColumn(0))
+    foreach ($friendList as $friend)
     {
-      self::getBlogListByMemberId($id, $list);
+      self::getBlogListByMemberId($friend->getId(), $list);
     }
     $list = self::sortBlogList($list, $size);
+
     if ($limitTitle)
     {
       self::limitBlogTitle($list);
     }
-    
+
     return $list;
   }
 
-  public static function getBlogListOfMember($member_id, $size = 20, $limitTitle = false)
+  static function getBlogListOfMember($member_id, $size = 20, $limitTitle = false)
   {
     $list = array();
     self::getBlogListByMemberId($member_id, $list);
@@ -140,26 +139,26 @@ class BlogPeer
     {
       self::limitBlogTitle($list);
     }
-    
+
     return $list;
   }
 
-  public static function getBlogListOfAllMember($size = 20, $limitTitle = false)
+  static function getBlogListOfAllMember($size = 20, $limitTitle = false)
   {
-    $c = new Criteria();
-    $c->addSelectColumn(MemberPeer::ID);
-    $stmt = MemberPeer::doSelectStmt($c);
+    $memberList = Doctrine::getTable('Member')->createQuery()->execute();
+
     $list = array();
-    while($id = $stmt->fetchColumn(0))
+    foreach ($memberList as $member)
     {
-      self::getBlogListByMemberId($id, $list);
+      self::getBlogListByMemberId($member->getId(), $list);
     }
+
     $list = self::sortBlogList($list, $size);
     if ($limitTitle)
     {
       self::limitBlogTitle($list);
     }
-    
+
     return $list;
   }
 }

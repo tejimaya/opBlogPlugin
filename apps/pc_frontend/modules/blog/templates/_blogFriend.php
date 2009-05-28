@@ -4,7 +4,7 @@ if (count($blogList))
 {
   include_parts(
     'BlogListBox',
-    'blogHomeFriend_'.$gadget->getId(),
+    'blogFriend_'.$gadget->getId(),
     array(
       'title' => __('Friends newest blog'),
       'list' => $blogList,

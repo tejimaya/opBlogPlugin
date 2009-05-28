@@ -1,9 +1,13 @@
 Gadget:
   blog_home_friend:
     type: "contents"
-    name: "blogHomeFriend"
-    sort_order: 101
+    name: "blogFriend"
+    sort_order: 100
   blog_home_user:
     type: "contents"
-    name: "blogHomeUser"
-    sort_order: 102
+    name: "blogUser"
+    sort_order: 110
+  blog_profile_user:
+    type: "profileContents"
+    name: "blogUser"
+    sort_order: 100

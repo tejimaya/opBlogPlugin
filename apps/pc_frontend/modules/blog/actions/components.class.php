@@ -1,4 +1,13 @@
 <?php
+
+/**
+ * This file is part of the OpenPNE package.
+ * (c) OpenPNE Project (http://www.openpne.jp/)
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file and the NOTICE file that were distributed with this source code.
+ */
+
 /**
  * introfriend components.
  *
@@ -6,32 +15,32 @@
  * @subpackage blog
  * @author     Masato Nagasawa <nagasawa@tejimaya.com>
  */
+
 class blogComponents extends sfComponents
 {
-  public function executeBlogHomeFriend()
+  public function executeBlogFriend()
   {
-    $this->blogList = BlogPeer::getBlogListOfFriend(
+    $this->blogList = opBlogPlugin::getBlogListOfFriends(
       $this->getUser()->getMemberId(),
       sfConfig::get('app_blog_component_size'),
       true
     );
   }
 
-  public function executeBlogHomeUser()
+  public function executeBlogUser($request)
   {
-    $this->member = $this->getUser()->getMember();
-    $this->blogList = BlogPeer::getBlogListOfMember(
-      $this->getUser()->getMemberId(),
-      sfConfig::get('app_blog_component_size'),
-      true
-    );
-  }
-
-  public function executeBlogProfile($request)
-  {
-    $this->member = MemberPeer::retrieveByPk($this->id);
-    $this->blogList = BlogPeer::getBlogListOfMember(
-      $this->id,
+    $id = 0;
+    if ($request->hasParameter('id'))
+    {
+      $id = $request->getParameter('id');
+    }
+    if (!$id)
+    {
+      $id = $this->getUser()->getMemberId();
+    }
+    $this->member = Doctrine::getTable('Member')->find($id);
+    $this->blogList = opBlogPlugin::getBlogListOfMember(
+      $id,
       sfConfig::get('app_blog_component_size'),
       true
     );

@@ -13,9 +13,9 @@
  *
  * @package    OpenPNE
  * @subpackage blog
- * @author     Your name here
- * @version    SVN: $Id: actions.class.php 9301 2008-05-27 01:08:46Z dwhittle $
+ * @author     Masato Nagasawa <nagasawa@tejimaya.com>
  */
+
 class blogActions extends sfActions
 {
  /**
@@ -25,7 +25,7 @@ class blogActions extends sfActions
   */
   public function executeIndex($request)
   {
-    $this->blogList = BlogPeer::getBlogListOfAllMember(sfConfig::get('app_blog_action_size'));
+    $this->blogList = opBlogPlugin::getBlogListOfAllMember(sfConfig::get('app_blog_action_size'));
     if (!count($this->blogList))
     {
       return sfView::ALERT;
@@ -39,7 +39,7 @@ class blogActions extends sfActions
   */
   public function executeFriend($request)
   {
-    $this->blogList = BlogPeer::getBlogListOfFriend(
+    $this->blogList = opBlogPlugin::getBlogListOfFriends(
       $this->getUser()->getMemberId(),
       sfConfig::get('app_blog_action_size')
     );
@@ -57,7 +57,7 @@ class blogActions extends sfActions
   public function executeUser($request)
   {
     $this->member = $this->getUser()->getMember();
-    $this->blogList = BlogPeer::getBlogListOfMember(
+    $this->blogList = opBlogPlugin::getBlogListOfMember(
       $this->getUser()->getMemberId(),
       sfConfig::get('app_blog_action_size')
     );
@@ -74,12 +74,12 @@ class blogActions extends sfActions
   public function executeProfile($request)
   {
     $this->id = $request->getParameter('id');
-    $this->member = MemberPeer::retrieveByPk($this->id);
+    $this->member = Doctrine::getTable('Member')->find($this->id);
     if (!$this->member)
     {
       return sfView::ERROR;
     }
-    $this->blogList = BlogPeer::getBlogListOfMember(
+    $this->blogList = opBlogPlugin::getBlogListOfMember(
       $this->id,
       sfConfig::get('app_blog_action_size')
     );
