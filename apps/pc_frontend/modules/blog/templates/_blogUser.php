@@ -1,15 +1,22 @@
 <?php
 
-if (count($blogList))
+if (count($blogRssCacheList))
 {
-  include_parts(
+  $param = '';
+  if ($member->getId() != $sf_user->getMemberId())
+  {
+    $param = '?='.$member->getId();
+  }
+
+  op_include_parts(
     'BlogListBox',
     'blogUser_'.$gadget->getId(),
     array(
+      'class' => 'homeRecentList',
       'title' => sprintf(__('Newest blog of %s'), $member->getName()),
-      'list' => $sf_data->getRaw('blogList'),
+      'blogRssCacheList' => $blogRssCacheList,
       'showName' => false,
-      'moreInfo' => 'blog/user'
+      'moreInfo' => array(link_to(__('More info'), 'blog/user'.$param))
     )
   );
 }

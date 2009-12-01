@@ -1,11 +1,12 @@
 <?php
 
-include_parts(
+op_include_parts(
   'BlogListPage',
   'blogFriend',
   array(
+    'class' => 'recentList',
     'title' => __('Newest blog'),
-    'list' => $sf_data->getRaw('blogList'),
+    'blogRssCacheList' => $blogRssCacheList,
     'showName' => true
   )
 );

@@ -20,10 +20,9 @@ class blogComponents extends sfComponents
 {
   public function executeBlogFriend()
   {
-    $this->blogList = opBlogPlugin::getBlogListOfFriends(
+    $this->blogRssCacheList = Doctrine::getTable('BlogRssCache')->getFriendBlogListByMemberId(
       $this->getUser()->getMemberId(),
-      sfConfig::get('app_blog_component_size'),
-      true
+      sfConfig::get('app_blog_component_size')
     );
   }
 
@@ -38,11 +37,11 @@ class blogComponents extends sfComponents
     {
       $id = $this->getUser()->getMemberId();
     }
+
     $this->member = Doctrine::getTable('Member')->find($id);
-    $this->blogList = opBlogPlugin::getBlogListOfMember(
+    $this->blogRssCacheList = Doctrine::getTable('BlogRssCache')->findByMemberId(
       $id,
-      sfConfig::get('app_blog_component_size'),
-      true
+      sfConfig::get('app_blog_component_size')
     );
   }
 }

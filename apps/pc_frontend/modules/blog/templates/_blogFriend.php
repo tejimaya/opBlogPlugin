@@ -1,15 +1,16 @@
 <?php
 
-if (count($blogList))
+if (count($blogRssCacheList))
 {
-  include_parts(
+  op_include_parts(
     'BlogListBox',
     'blogFriend_'.$gadget->getId(),
     array(
+      'class' => 'homeRecentList',
       'title' => __('Friends newest blog'),
-      'list' => $blogList,
+      'blogRssCacheList' => $blogRssCacheList,
       'showName' => true,
-      'moreInfo' => 'blog/friend'
+      'moreInfo' => array(link_to(__('More info'), 'blog/friend'))
     )
   );
 }

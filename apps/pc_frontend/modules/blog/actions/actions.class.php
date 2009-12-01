@@ -25,8 +25,11 @@ class blogActions extends sfActions
   */
   public function executeIndex($request)
   {
-    $this->blogList = opBlogPlugin::getBlogListOfAllMember(sfConfig::get('app_blog_action_size'));
-    if (!count($this->blogList))
+    $this->blogRssCacheList = Doctrine::getTable('BlogRssCache')->getAllMembers(
+      sfConfig::get('app_blog_action_size')
+    );
+
+    if (!count($this->blogRssCacheList))
     {
       return sfView::ALERT;
     }
@@ -39,11 +42,12 @@ class blogActions extends sfActions
   */
   public function executeFriend($request)
   {
-    $this->blogList = opBlogPlugin::getBlogListOfFriends(
+    $this->blogRssCacheList = Doctrine::getTable('BlogRssCache')->getFriendBlogListByMemberId(
       $this->getUser()->getMemberId(),
       sfConfig::get('app_blog_action_size')
     );
-    if (!count($this->blogList))
+
+    if (!count($this->blogRssCacheList))
     {
       return sfView::ALERT;
     }
@@ -56,34 +60,27 @@ class blogActions extends sfActions
   */
   public function executeUser($request)
   {
-    $this->member = $this->getUser()->getMember();
-    $this->blogList = opBlogPlugin::getBlogListOfMember(
-      $this->getUser()->getMemberId(),
-      sfConfig::get('app_blog_action_size')
-    );
-    if (!count($this->blogList))
+    if ($request->hasParameter('id'))
     {
-      return sfView::ALERT;
+      $this->id = $request->getParameter('id');
+      $this->member = Doctrine::getTable('Member')->find($this->id);
+      if (!$this->member)
+      {
+        return sfView::ERROR;
+      }
     }
-  }
- /**
-  * Executes profile action
-  *
-  * @param sfRequest $request A request object
-  */
-  public function executeProfile($request)
-  {
-    $this->id = $request->getParameter('id');
-    $this->member = Doctrine::getTable('Member')->find($this->id);
-    if (!$this->member)
+    else
     {
-      return sfView::ERROR;
+      $this->member = $this->getUser()->getMember();
+      $this->id = $this->member->getId();
     }
-    $this->blogList = opBlogPlugin::getBlogListOfMember(
+
+    $this->blogRssCacheList = Doctrine::getTable('BlogRssCache')->findByMemberId(
       $this->id,
       sfConfig::get('app_blog_action_size')
     );
-    if (!count($this->blogList))
+
+    if (!count($this->blogRssCacheList))
     {
       return sfView::ALERT;
     }

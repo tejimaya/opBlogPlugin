@@ -1,34 +1,14 @@
-<div id="<?php echo $id ?>" class="dparts homeRecentList">
-<div class="parts">
-
-<div class="partsHeading">
-<h3><?php echo $options['title'] ?></h3>
-</div>
-
-<div class="block">
-
 <ul class="articleList">
-<?php foreach($options->getRaw('list') as $res): ?>
+<?php foreach($options['blogRssCacheList'] as $blogRssCache): ?>
 <li>
-<span class="date"><?php echo date( __('m/d'), $res['date']) ?></span>
-<?php image_tag('articleList_maker.gif', array('alf' => '')) ?> 
+<span class="date"><?php echo op_format_date($blogRssCache->getDate(), 'XShortDateJa') ?></span>
+<?php echo image_tag('articleList_maker.gif', array('alt' => '')) ?> 
 <?php
-echo '<a href="' . $res['link_to_external'] . '">' . $res['title'] . '</a>';
+echo link_to(op_truncate($blogRssCache->getTitle(), 30), $blogRssCache->getLink());
 ?>
 <?php if ($options['showName']): ?>
-(<?php echo $res['name'] ?>)
+(<?php echo $blogRssCache->getName() ?>)
 <?php endif ?>
 </li>
 <?php endforeach; ?>
 </ul>
-
-<?php if (isset($options['moreInfo'])): ?>
-<div class="moreInfo"><ul class="moreInfo"><li>
-<?php echo link_to(__('More info'), $options['moreInfo']) ?>
-</li></ul></div>
-<?php endif; ?>
-
-</div>
-
-</div></div>
-

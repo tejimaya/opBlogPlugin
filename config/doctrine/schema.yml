@@ -1,0 +1,14 @@
+options:
+  charset: utf8
+actAs: [Timestampable]
+
+BlogRssCache:
+  columns:
+    id: { type: integer(4), primary: true, autoincrement: true }
+    member_id: { type: integer(4) }
+    title: { type: string }
+    description: { type: string }
+    link: { type: string }
+    date: { type: datetime }
+  relations:
+    Member: { local: member_id, foreign: id }

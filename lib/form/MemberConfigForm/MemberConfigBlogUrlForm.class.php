@@ -47,4 +47,13 @@ class MemberConfigBlogUrlForm extends MemberConfigForm
     }
     return $value;
   }
+
+  public function save()
+  {
+    Doctrine::getTable('BlogRssCache')->deleteByMemberId($this->member->getId());
+    parent::save();
+    Doctrine::getTable('BlogRssCache')->updateByMemberId($this->member->getId());
+
+    return true;
+  }
 }
