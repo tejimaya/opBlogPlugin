@@ -35,21 +35,18 @@ EOF;
     opDoctrineRecord::setDefaultCulture(sfConfig::get('default_culture', 'ja_JP'));
     sfContext::createInstance($this->createConfiguration('pc_frontend', 'prod'), 'pc_frontend');
 
-    $startMemberId = sfConfig::get('next_update_blog_rss_cache_member_id', 1);
+    $next = sfConfig::get('next_update_blog_rss_cache', 0);
     $size = sfConfig::get('app_update_blog_rss_cache_limit', 0);
+    $last = Doctrine::getTable('BlogRssCache')->countFeedUrl();
 
-    $count = Doctrine::getTable('BlogRssCache')->update($startMemberId, $size);
+    $next += Doctrine::getTable('BlogRssCache')->update($next, $size);
 
-    if ($count < $size)
+    if ($next >= $last)
     {
-      $nextMemberId = 1;
-    }
-    else
-    {
-      $nextMemberId = $startMemberId + $size;
+      $next = 0;
     }
 
-    sfConfig::set('next_update_blog_rss_cache_member_id', $nextMemberId);
+    sfConfig::set('next_update_blog_rss_cache', $next);
   }
 
   protected function openDatabaseConnection()

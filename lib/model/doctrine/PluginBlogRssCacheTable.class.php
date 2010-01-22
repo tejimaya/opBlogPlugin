@@ -11,16 +11,16 @@ class PluginBlogRssCacheTable extends Doctrine_Table
       ->execute();
   }
 
-  public function update($startMemberId, $size = 0)
+  public function update($offset = 0, $size = 0)
   {
     $q = Doctrine::getTable('MemberConfig')->createQuery()
-      ->where('name = ?', 'blog_url')
-      ->addWhere('member_id >= ?', $startMemberId)
-      ->orderBy('member_id DESC');
+      ->where('name = ?', 'blog_url');
 
     if ($size)
     {
-      $q->limit($size);
+      $q->orderBy('member_id')
+        ->limit($size)
+        ->offset($offset);
     }
     $memberConfigList = $q->execute();
 
@@ -30,6 +30,13 @@ class PluginBlogRssCacheTable extends Doctrine_Table
     }
 
     return $memberConfigList->count();
+  }
+
+  public function countFeedUrl()
+  {
+    return Doctrine::getTable('MemberConfig')->createQuery()
+      ->where('name = ?', 'blog_url')
+      ->count();
   }
 
   public function updateByMemberId($memberId)
@@ -91,7 +98,7 @@ class PluginBlogRssCacheTable extends Doctrine_Table
         $item['link']
       );
 
-      if (($blogRssCache && $blogRssCache->getUpdatedAt() == $item['date']) ||
+      if (($blogRssCache && $blogRssCache->getDate() == $item['date']) ||
         strtotime($item['date']) > time())
       {
         continue;
