@@ -23,9 +23,10 @@ class openpneUpdateBlogRssCacheTask extends sfDoctrineBaseTask
     $this->name             = 'update-blog-rss-cache';
     $this->briefDescription = 'Updating blog rss cache';
     $this->detailedDescription = <<<EOF
-The [openpne:update-blog-rss-cache|INFO].
+The [openpne:update-blog-rss-cache|INFO] task does things.
+Call it with:
 
-  [./symfony opPlugin:update-blog-rss-cache|INFO]
+  [php symfony openpne:update-blog-rss-cache|INFO]
 EOF;
   }
 
