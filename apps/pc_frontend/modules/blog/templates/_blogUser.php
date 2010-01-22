@@ -5,7 +5,7 @@ if (count($blogRssCacheList))
   $param = '';
   if ($member->getId() != $sf_user->getMemberId())
   {
-    $param = '?='.$member->getId();
+    $param = 'id?='.$member->getId();
   }
 
   op_include_parts(
