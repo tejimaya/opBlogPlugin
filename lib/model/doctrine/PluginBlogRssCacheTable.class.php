@@ -5,11 +5,10 @@ class PluginBlogRssCacheTable extends Doctrine_Table
 {
   public function deleteByMemberId($memberId)
   {
-    $blogRssCacheList = $this->findByMemberId($memberId);
-    if ($blogRssCacheList)
-    {
-      $blogRssCacheList->delete();
-    }
+    Doctrine_Query::create()
+      ->delete('BlogRssCache')
+      ->where('member_id = ?', $memberId)
+      ->execute();
   }
 
   public function update($startMemberId, $size = 0)
