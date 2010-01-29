@@ -5,7 +5,7 @@ if (count($blogRssCacheList))
   $param = '';
   if ($member->getId() != $sf_user->getMemberId())
   {
-    $param = '?id='.$member->getId();
+    $param = '_profile?id='.$member->getId();
   }
 
   op_include_parts(
@@ -16,7 +16,7 @@ if (count($blogRssCacheList))
       'title' => sprintf(__('Newest blog of %s'), $member->getName()),
       'blogRssCacheList' => $blogRssCacheList,
       'showName' => false,
-      'moreInfo' => array(link_to(__('More info'), 'blog/user'.$param))
+      'moreInfo' => array(link_to(__('More info'), '@blog_user'.$param))
     )
   );
 }

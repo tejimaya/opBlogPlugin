@@ -10,7 +10,7 @@ if (count($blogRssCacheList))
       'title' => __('Friends newest blog'),
       'blogRssCacheList' => $blogRssCacheList,
       'showName' => true,
-      'moreInfo' => array(link_to(__('More info'), 'blog/friend'))
+      'moreInfo' => array(link_to(__('More info'), '@blog_friend'))
     )
   );
 }

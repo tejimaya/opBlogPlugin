@@ -60,16 +60,7 @@ class blogActions extends sfActions
   */
   public function executeUser($request)
   {
-    if ($request->hasParameter('id'))
-    {
-      $this->id = $request->getParameter('id');
-      $this->member = Doctrine::getTable('Member')->find($this->id);
-      if (!$this->member)
-      {
-        return sfView::ERROR;
-      }
-    }
-    else
+    if (!$request->hasParameter('id'))
     {
       $this->member = $this->getUser()->getMember();
       $this->id = $this->member->getId();
