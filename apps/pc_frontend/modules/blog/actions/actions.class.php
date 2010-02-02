@@ -65,6 +65,12 @@ class blogActions extends sfActions
       $this->member = $this->getUser()->getMember();
       $this->id = $this->member->getId();
     }
+    else
+    {
+      $relation = Doctrine::getTable('MemberRelationship')
+        ->retrieveByFromAndTo($this->getUser()->getMemberId(), $this->id);
+      $this->redirectIf($relation && $relation->isAccessBlocked(), '@error');
+    }
 
     $this->blogRssCacheList = Doctrine::getTable('BlogRssCache')->findByMemberId(
       $this->id,

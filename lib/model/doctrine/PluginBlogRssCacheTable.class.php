@@ -54,6 +54,8 @@ class PluginBlogRssCacheTable extends Doctrine_Table
       $memberIdList[] = $member->getId();
     }
 
+    $memberIdList = array_diff($memberIdList, $this->getAccessBlockedFriendMemberIds($memberId));
+
     if (!count($memberIdList))
     {
       return array();
@@ -86,6 +88,22 @@ class PluginBlogRssCacheTable extends Doctrine_Table
       ->orderBy('date DESC')
       ->limit($size)
       ->execute();
+  }
+
+  public function getAccessBlockedFriendMemberIds($memberId)
+  {
+    $relationList = Doctrine::getTable('MemberRelationship')->createQuery()
+      ->select('member_id_from AS id')
+      ->where('member_id_to = ?', $memberId)
+      ->andWhere('is_access_block = ?', true)
+      ->execute(array(), Doctrine::HYDRATE_ARRAY);
+
+    $memberIds = array();
+    foreach ($relationList as $relation)
+    {
+      $memberIds[] = $relation['id'];
+    }
+    return $memberIds;
   }
 
   protected function updateByMemberIdAndUrl($memberId, $url)
