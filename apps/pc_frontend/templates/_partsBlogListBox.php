@@ -7,7 +7,7 @@
 echo link_to(op_truncate($blogRssCache->getTitle(), 30), $blogRssCache->getLink());
 ?>
 <?php if ($options['showName']): ?>
-(<?php echo $blogRssCache->getName() ?>)
+(<?php echo $blogRssCache->getMember()->getName() ?>)
 <?php endif ?>
 </li>
 <?php endforeach; ?>
