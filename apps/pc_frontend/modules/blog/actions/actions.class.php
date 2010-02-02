@@ -63,17 +63,19 @@ class blogActions extends sfActions
     if (!$request->hasParameter('id'))
     {
       $this->member = $this->getUser()->getMember();
-      $this->id = $this->member->getId();
     }
     else
     {
+      $this->member = $this->getRoute()->getObject();
+
       $relation = Doctrine::getTable('MemberRelationship')
-        ->retrieveByFromAndTo($this->getUser()->getMemberId(), $this->id);
+        ->retrieveByFromAndTo($this->getUser()->getMemberId(), $this->member->getId());
+
       $this->redirectIf($relation && $relation->isAccessBlocked(), '@error');
     }
 
     $this->blogRssCacheList = Doctrine::getTable('BlogRssCache')->findByMemberId(
-      $this->id,
+      $this->member->getId(),
       sfConfig::get('app_blog_action_size')
     );
 
