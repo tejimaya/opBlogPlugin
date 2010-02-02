@@ -14,14 +14,14 @@
   <active>yes</active>
  </lead>
  <date>2010-02-02</date>
- <time>04:35:54</time>
+ <time>05:38:50</time>
  <version>
   <release>1.0.0</release>
   <api>1.0.0</api>
  </version>
  <stability>
-  <release>beta</release>
-  <api>beta</api>
+  <release>stable</release>
+  <api>stable</api>
  </stability>
  <license>apache</license>
  <notes>
@@ -117,8 +117,8 @@ This plugin is now compatible with Doctrine
     <api>1.0.0</api>
    </version>
    <stability>
-    <release>beta</release>
-    <api>beta</api>
+    <release>stable</release>
+    <api>stable</api>
    </stability>
    <date>2010-02-02</date>
    <license>apache</license>
