@@ -28,11 +28,11 @@ class opBlogPluginFrontendRouteCollection extends opBlogPluginBaseRouteCollectio
         '/blog/user',
         array('module' => 'blog', 'action' => 'user')
       ),
-      'blog_user_profile' => new sfRoute(
+      'blog_user_profile' => new sfDoctrineRoute(
         '/blog/user/:id',
+        array('module' => 'blog', 'action' => 'user'),
         array('id' => '\d+'),
-        array('model' => 'Member', 'type' => 'object'),
-        array('module' => 'blog', 'action' => 'user')
+        array('model' => 'Member', 'type' => 'object')
       ),
       'blog_friend' => new sfRoute(
         '/blog/friend',
