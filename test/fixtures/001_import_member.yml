@@ -1,0 +1,18 @@
+Member:
+<?php for ($i = 1; $i <= 10; $i++): ?>
+  member_<?php echo $i ?>:
+    id: <?php echo $i."\n" ?>
+    name: "OpenPNE<?php echo $i ?>"
+    is_active: 1
+<?php endfor ?>
+
+MemberConfig:
+  member_1_pc_address:
+    name: "pc_address"
+    value: "sns@example.com"
+    Member: member_1
+
+  member_1_password:
+    name: "password"
+    value: <?php echo md5('password') . "\n"; ?>
+    Member: member_1
