@@ -1,3 +1,5 @@
 <?php
 
-include_box('blogError', __('Error'), __('The member id is invalid'));
+op_include_box('blogError', __('The member id is invalid'), array(
+  'title' => __('Error')
+));

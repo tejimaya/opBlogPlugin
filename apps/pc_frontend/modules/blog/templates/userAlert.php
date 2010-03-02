@@ -1,3 +1,5 @@
 <?php
 
-include_box('blogAlert', sprintf(__('Newest blog of %s'), $member->getName()), __('The blog is none'));
+op_include_box('blogAlert', __('The blog is none'), array(
+  'title' => sprintf(__('Newest blog of %s'), $member->getName())
+));

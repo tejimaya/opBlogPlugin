@@ -1,3 +1,5 @@
 <?php
 
-include_box('blogAlert', __('Newest blog'), __('The blog is none'));
+op_include_box('blogAlert', __('The blog is none'), array(
+  'title' => __('Newest blog')
+));
