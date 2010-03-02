@@ -5,7 +5,7 @@ op_include_parts(
   'blogIndex',
   array(
     'class' => 'recentList',
-    'title' => __('Friends Newest blog'),
+    'title' => __('Friends newest blog'),
     'blogRssCacheList' => $blogRssCacheList,
     'showName' => true
   )
