@@ -10,6 +10,8 @@
 
 class opBlogPlugin
 {
+  static protected $transTable = null;
+
   static function createSimplePie($url)
   {
     $feed = new SimplePie();
@@ -45,9 +47,9 @@ class opBlogPlugin
     $result = array();
     foreach ($feed->get_items() as $item)
     {
-      $title = $item->get_title();
-      $description = $item->get_description();
-      $link = $item->get_link();
+      $title = self::unescape($item->get_title());
+      $description = self::unescape($item->get_description());
+      $link = self::unescape($item->get_link());
       $date = @$item->get_date('Y-m-d H:i:s');
 
       $result[] = array(
@@ -59,5 +61,16 @@ class opBlogPlugin
     }
 
     return $result;
+  }
+
+  static function unescape($string)
+  {
+    if (!self::$transTable)
+    {
+      self::$transTable = array_flip(get_html_translation_table(HTML_SPECIALCHARS, ENT_QUOTES));
+      self::$transTable['&#039;'] = "'";
+    }
+
+    return strtr($string, self::$transTable);
   }
 }
