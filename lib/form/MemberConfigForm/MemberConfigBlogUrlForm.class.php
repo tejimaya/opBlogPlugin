@@ -25,7 +25,7 @@ class MemberConfigBlogUrlForm extends MemberConfigForm
 
     if ($name === 'blog_url')
     {
-      $this->widgetSchema['blog_url']->setAttributes(array('size' => 69));
+      $this->widgetSchema['blog_url']->setAttributes(array('size' => 57));
       $this->mergePostValidator(new sfValidatorCallback(array(
         'callback'  => array($this, 'validate'),
       )));
