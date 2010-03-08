@@ -6,6 +6,11 @@ if (count($blogRssCacheList))
   if ($member->getId() != $sf_user->getMemberId())
   {
     $param = '_profile?id='.$member->getId();
+    $title = __('Newest blog');
+  }
+  else
+  {
+    $title = sprintf(__('My blog'));
   }
 
   op_include_parts(
@@ -13,7 +18,7 @@ if (count($blogRssCacheList))
     'blogUser_'.$gadget->getId(),
     array(
       'class' => 'homeRecentList',
-      'title' => sprintf(__('Newest blog of %s'), $member->getName()),
+      'title' => $title,
       'blogRssCacheList' => $blogRssCacheList,
       'showName' => false,
       'moreInfo' => array(link_to(__('More info'), '@blog_user'.$param))
