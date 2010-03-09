@@ -13,11 +13,11 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2010-02-02</date>
- <time>05:38:50</time>
+ <date>2010-03-08</date>
+ <time>21:42:51</time>
  <version>
-  <release>1.0.0</release>
-  <api>1.0.0</api>
+  <release>1.0.1</release>
+  <api>1.0.1</api>
  </version>
  <stability>
   <release>stable</release>
@@ -25,42 +25,43 @@
  </stability>
  <license>apache</license>
  <notes>
-rss cache enabled
+Fixed some bugs.
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
    <file baseinstalldir="/" md5sum="942454abd9d2834820bc72b5d8159104" name="apps/pc_frontend/config/routing.yml" role="data" />
-   <file baseinstalldir="/" md5sum="c3bb4c1803a627ddcb3fa349151d1714" name="apps/pc_frontend/i18n/messages.ja.xml" role="data" />
+   <file baseinstalldir="/" md5sum="a32e2e2bd9a073dfc448cf7deff7b8eb" name="apps/pc_frontend/i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="e8ab0481b5793c7ea96f159ed87e7c55" name="apps/pc_frontend/modules/blog/actions/actions.class.php" role="data" />
    <file baseinstalldir="/" md5sum="e3bb75a283cd0bd4ad2bd9d4e6afaedc" name="apps/pc_frontend/modules/blog/actions/components.class.php" role="data" />
    <file baseinstalldir="/" md5sum="9cbbf2a71ebac31c5e9df7c44c2e0dec" name="apps/pc_frontend/modules/blog/config/security.yml" role="data" />
-   <file baseinstalldir="/" md5sum="34fd09099c56fb5ea34b35f4520f48b2" name="apps/pc_frontend/modules/blog/templates/friendAlert.php" role="data" />
-   <file baseinstalldir="/" md5sum="c1541ed7e54eb97b671616211e5b6ded" name="apps/pc_frontend/modules/blog/templates/friendSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="34fd09099c56fb5ea34b35f4520f48b2" name="apps/pc_frontend/modules/blog/templates/indexAlert.php" role="data" />
+   <file baseinstalldir="/" md5sum="f0caf480600254790397faff794791cb" name="apps/pc_frontend/modules/blog/templates/friendAlert.php" role="data" />
+   <file baseinstalldir="/" md5sum="fb12f846ddb6f3cf48660b9b1c02159e" name="apps/pc_frontend/modules/blog/templates/friendSuccess.php" role="data" />
+   <file baseinstalldir="/" md5sum="f0caf480600254790397faff794791cb" name="apps/pc_frontend/modules/blog/templates/indexAlert.php" role="data" />
    <file baseinstalldir="/" md5sum="ed9e6039df9747fb60943283907b2b81" name="apps/pc_frontend/modules/blog/templates/indexSuccess.php" role="data" />
-   <file baseinstalldir="/" md5sum="e93c811c4e49e0b246a8eb082a744290" name="apps/pc_frontend/modules/blog/templates/userAlert.php" role="data" />
-   <file baseinstalldir="/" md5sum="1548651037438b8bf2e70d088e5810a8" name="apps/pc_frontend/modules/blog/templates/userError.php" role="data" />
+   <file baseinstalldir="/" md5sum="97127c49b64c7f78a256b004b7fd8e19" name="apps/pc_frontend/modules/blog/templates/userAlert.php" role="data" />
+   <file baseinstalldir="/" md5sum="36d85452eee3dfb5878f41dbf96d16c4" name="apps/pc_frontend/modules/blog/templates/userError.php" role="data" />
    <file baseinstalldir="/" md5sum="db58f94c7f9aa7b6a6ccf01097ea25e7" name="apps/pc_frontend/modules/blog/templates/userSuccess.php" role="data" />
    <file baseinstalldir="/" md5sum="c869c72798506c4526fe291be65e3eb1" name="apps/pc_frontend/modules/blog/templates/_blogFriend.php" role="data" />
-   <file baseinstalldir="/" md5sum="560d413c2ffe4f50e8d7734615f0fa25" name="apps/pc_frontend/modules/blog/templates/_blogUser.php" role="data" />
-   <file baseinstalldir="/" md5sum="92af584bd22f3d4dbb3dd5659dfb21fe" name="apps/pc_frontend/templates/_partsBlogListBox.php" role="data" />
+   <file baseinstalldir="/" md5sum="3c08a5b6ac68d8ba7c9913380aea2c48" name="apps/pc_frontend/modules/blog/templates/_blogUser.php" role="data" />
+   <file baseinstalldir="/" md5sum="abf863c1408c12befbcd6074e107807f" name="apps/pc_frontend/templates/_partsBlogListBox.php" role="data" />
    <file baseinstalldir="/" md5sum="11fb7d459b65fc320ab60e1ceaed8ac5" name="apps/pc_frontend/templates/_partsBlogListPage.php" role="data" />
    <file baseinstalldir="/" md5sum="e3b4784df33879ef64f23deb61aad900" name="config/app.yml" role="data" />
    <file baseinstalldir="/" md5sum="25f7ae80b7c9ceffe31606fc19ed69a4" name="config/gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="57ac168e29be0a0bf07bd79e68cd4205" name="config/member_config.yml" role="data" />
    <file baseinstalldir="/" md5sum="e93c19f59130b79c9a5c84690e23ec54" name="config/profile_gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="db4afc3d4b527f9349b6323adce26f2f" name="config/doctrine/schema.yml" role="data" />
+   <file baseinstalldir="/" md5sum="287cfbd36e51060dcca63338ad37c029" name="data/fixtures/000_revision.yml" role="data" />
    <file baseinstalldir="/" md5sum="8646cfb38ab4bf09acc159b44b9bc5f4" name="data/fixtures/010_navigation.yml" role="data" />
    <file baseinstalldir="/" md5sum="e89e1fbea5dc9f554a3e721df5eb7ec8" name="data/fixtures/020_gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="f5ccf83f3e168fa8a4102a65ff1681ec" name="data/migrations/1.0.0/001_add_blog_rss_cache_table.php" role="data" />
    <file baseinstalldir="/" md5sum="716de91647d31ee61dc667477a19869f" name="data/migrations/1.0.0/002_add_index_to_blog_rss_cache.php" role="data" />
    <file baseinstalldir="/" md5sum="8217b49f7f724c355caa3d2bf85aa7e5" name="i18n/messages.ja.xml" role="data" />
-   <file baseinstalldir="/" md5sum="3c908ddc6ee483575f60308ed6f3e9fb" name="lib/opBlogPlugin.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="c4c960728d62ebd1b61a4ea898befe33" name="lib/opBlogPlugin.class.php" role="data" />
    <file baseinstalldir="/" md5sum="85279c3926b2398c5c042c526b1d265b" name="lib/filter/doctrine/PluginBlogRssCacheFormFilter.class.php" role="data" />
    <file baseinstalldir="/" md5sum="e773aa54709f27d2629c18ca04834f10" name="lib/form/doctrine/PluginBlogRssCacheForm.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="215e5188b2414d2aee5eb72418d2a297" name="lib/form/MemberConfigForm/MemberConfigBlogUrlForm.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="3a493558879f381be991e422a532cb38" name="lib/form/MemberConfigForm/MemberConfigBlogUrlForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="8866c916924e5a558fd03351c4144683" name="lib/model/doctrine/PluginBlogRssCache.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="ee33476ef8f7b91ffa2fd863ab0efe90" name="lib/model/doctrine/PluginBlogRssCacheTable.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="ddf124aafce5eb97d2c6b90e0d448e67" name="lib/model/doctrine/PluginBlogRssCacheTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="ebb0e1f60eceaf512e337ad0f219fe90" name="lib/routing/opBlogPluginBaseRouteCollection.class.php" role="data" />
    <file baseinstalldir="/" md5sum="8876baebdaf7d57d2a9f3461256b5702" name="lib/routing/opBlogPluginFrontendRouteCollection.class.php" role="data" />
    <file baseinstalldir="/" md5sum="fee64de234442b961de4e4ebd9282e32" name="lib/task/openpneUpdateBlogRssCacheTask.class.php" role="data" />
@@ -124,6 +125,21 @@ This plugin is now compatible with Doctrine
    <license>apache</license>
    <notes>
 rss cache enabled
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.1</release>
+    <api>1.0.1</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2010-03-08</date>
+   <license>apache</license>
+   <notes>
+Fixed some bugs.
    </notes>
   </release>
  </changelog>
