@@ -47,14 +47,8 @@ class PluginBlogRssCacheTable extends Doctrine_Table
 
   public function getFriendBlogListByMemberId($memberId, $size = 20)
   {
-    $memberList = Doctrine::getTable('Member')->find($memberId)->getFriends();
-    $memberIdList = array();
-    foreach ($memberList as $member)
-    {
-      $memberIdList[] = $member->getId();
-    }
-
-    $memberIdList = array_diff($memberIdList, $this->getAccessBlockedFriendMemberIds($memberId));
+    $friendIds = Doctrine::getTable('MemberRelationship')->getFriendMemberIds($memberId);
+    $memberIdList = array_diff($friendIds, $this->getAccessBlockedFriendMemberIds($memberId));
 
     if (!count($memberIdList))
     {
