@@ -15,3 +15,5 @@ BlogRssCache:
   indexes:
     date_INDEX:
       fields: [date]
+    member_id_date:
+      fields: [member_id, date]
