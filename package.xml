@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+<package packagerversion="1.7.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
@@ -13,20 +13,18 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2010-03-08</date>
- <time>21:42:51</time>
+ <date>2010-07-26</date>
+ <time>16:23:39</time>
  <version>
-  <release>1.0.1</release>
-  <api>1.0.1</api>
+  <release>1.0.2</release>
+  <api>1.0.2</api>
  </version>
  <stability>
-  <release>stable</release>
-  <api>stable</api>
+  <release>beta</release>
+  <api>beta</api>
  </stability>
  <license>apache</license>
- <notes>
-Fixed some bugs.
- </notes>
+ <notes>speed tuning and fixed task bug.</notes>
  <contents>
   <dir baseinstalldir="/" name="/">
    <file baseinstalldir="/" md5sum="942454abd9d2834820bc72b5d8159104" name="apps/pc_frontend/config/routing.yml" role="data" />
@@ -49,22 +47,23 @@ Fixed some bugs.
    <file baseinstalldir="/" md5sum="25f7ae80b7c9ceffe31606fc19ed69a4" name="config/gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="57ac168e29be0a0bf07bd79e68cd4205" name="config/member_config.yml" role="data" />
    <file baseinstalldir="/" md5sum="e93c19f59130b79c9a5c84690e23ec54" name="config/profile_gadget.yml" role="data" />
-   <file baseinstalldir="/" md5sum="db4afc3d4b527f9349b6323adce26f2f" name="config/doctrine/schema.yml" role="data" />
+   <file baseinstalldir="/" md5sum="0c0df5409ce19cd4e390adcb00074b94" name="config/doctrine/schema.yml" role="data" />
    <file baseinstalldir="/" md5sum="287cfbd36e51060dcca63338ad37c029" name="data/fixtures/000_revision.yml" role="data" />
    <file baseinstalldir="/" md5sum="8646cfb38ab4bf09acc159b44b9bc5f4" name="data/fixtures/010_navigation.yml" role="data" />
    <file baseinstalldir="/" md5sum="e89e1fbea5dc9f554a3e721df5eb7ec8" name="data/fixtures/020_gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="f5ccf83f3e168fa8a4102a65ff1681ec" name="data/migrations/1.0.0/001_add_blog_rss_cache_table.php" role="data" />
    <file baseinstalldir="/" md5sum="716de91647d31ee61dc667477a19869f" name="data/migrations/1.0.0/002_add_index_to_blog_rss_cache.php" role="data" />
+   <file baseinstalldir="/" md5sum="b4c4216452a38a6e21c1ed4c309c9a58" name="data/migrations/1.0.2/003_add_index_to_blog_rss_cache.php" role="data" />
    <file baseinstalldir="/" md5sum="8217b49f7f724c355caa3d2bf85aa7e5" name="i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="c4c960728d62ebd1b61a4ea898befe33" name="lib/opBlogPlugin.class.php" role="data" />
    <file baseinstalldir="/" md5sum="85279c3926b2398c5c042c526b1d265b" name="lib/filter/doctrine/PluginBlogRssCacheFormFilter.class.php" role="data" />
    <file baseinstalldir="/" md5sum="e773aa54709f27d2629c18ca04834f10" name="lib/form/doctrine/PluginBlogRssCacheForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="3a493558879f381be991e422a532cb38" name="lib/form/MemberConfigForm/MemberConfigBlogUrlForm.class.php" role="data" />
    <file baseinstalldir="/" md5sum="8866c916924e5a558fd03351c4144683" name="lib/model/doctrine/PluginBlogRssCache.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="ddf124aafce5eb97d2c6b90e0d448e67" name="lib/model/doctrine/PluginBlogRssCacheTable.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="f5f01d3591d2e4324dae0136b484fa48" name="lib/model/doctrine/PluginBlogRssCacheTable.class.php" role="data" />
    <file baseinstalldir="/" md5sum="ebb0e1f60eceaf512e337ad0f219fe90" name="lib/routing/opBlogPluginBaseRouteCollection.class.php" role="data" />
    <file baseinstalldir="/" md5sum="8876baebdaf7d57d2a9f3461256b5702" name="lib/routing/opBlogPluginFrontendRouteCollection.class.php" role="data" />
-   <file baseinstalldir="/" md5sum="fee64de234442b961de4e4ebd9282e32" name="lib/task/openpneUpdateBlogRssCacheTask.class.php" role="data" />
+   <file baseinstalldir="/" md5sum="6a288744d189c9c44ec553ca71c4efb5" name="lib/task/openpneUpdateBlogRssCacheTask.class.php" role="data" />
    <file baseinstalldir="/" md5sum="2377070dba7169692470a162614b8b29" name="lib/vendor/LICENSE.txt" role="data" />
    <file baseinstalldir="/" md5sum="344d74567938d7238ed3a37de406c3da" name="lib/vendor/simplepie.php" role="data" />
    <file baseinstalldir="/" md5sum="d460b44aecd15536876489abe4bb6fe5" name="test/bootstrap/database.php" role="data" />
@@ -108,9 +107,7 @@ Fixed some bugs.
    </stability>
    <date>2009-05-28</date>
    <license>apache</license>
-   <notes>
-This plugin is now compatible with Doctrine
-   </notes>
+   <notes>This plugin is now compatible with Doctrine</notes>
   </release>
   <release>
    <version>
@@ -123,9 +120,7 @@ This plugin is now compatible with Doctrine
    </stability>
    <date>2010-02-02</date>
    <license>apache</license>
-   <notes>
-rss cache enabled
-   </notes>
+   <notes>rss cache enabled</notes>
   </release>
   <release>
    <version>
@@ -138,9 +133,20 @@ rss cache enabled
    </stability>
    <date>2010-03-08</date>
    <license>apache</license>
-   <notes>
-Fixed some bugs.
-   </notes>
+   <notes>Fixed some bugs.</notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.2</release>
+    <api>1.0.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2010-07-26</date>
+   <license>apache</license>
+   <notes>speed tuning and fixed task bug.</notes>
   </release>
  </changelog>
 </package>
