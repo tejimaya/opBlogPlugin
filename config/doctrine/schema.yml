@@ -11,7 +11,7 @@ BlogRssCache:
     link: { type: string }
     date: { type: timestamp }
   relations:
-    Member: { local: member_id, foreign: id }
+    Member: { local: member_id, foreign: id, onDelete: cascade }
   indexes:
     date_INDEX:
       fields: [date]
