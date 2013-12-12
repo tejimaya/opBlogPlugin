@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.7.2" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
     http://pear.php.net/dtd/tasks-1.0.xsd
     http://pear.php.net/dtd/package-2.0
     http://pear.php.net/dtd/package-2.0.xsd">
@@ -13,18 +13,32 @@
   <email />
   <active>yes</active>
  </lead>
- <date>2010-07-26</date>
- <time>16:23:39</time>
+ <lead>
+  <name>Yuya Watanabe</name>
+  <user>watanabe</user>
+  <email />
+  <active>yes</active>
+ </lead>
+ <lead>
+  <name>Imamura Mutsumi</name>
+  <user>imamura623</user>
+  <email />
+  <active>yes</active>
+ </lead>
+ <date>2013-12-12</date>
+ <time>18:11:46</time>
  <version>
-  <release>1.0.2</release>
-  <api>1.0.2</api>
+  <release>1.0.3</release>
+  <api>1.0.3</api>
  </version>
  <stability>
-  <release>beta</release>
-  <api>beta</api>
+  <release>stable</release>
+  <api>stable</api>
  </stability>
  <license>apache</license>
- <notes>speed tuning and fixed task bug.</notes>
+ <notes>
+Bug（バグ） #3473: opBlogPlugin を使用しているメンバーが退会しようとすると500エラーとなる
+ </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
    <file baseinstalldir="/" md5sum="942454abd9d2834820bc72b5d8159104" name="apps/pc_frontend/config/routing.yml" role="data" />
@@ -47,13 +61,14 @@
    <file baseinstalldir="/" md5sum="25f7ae80b7c9ceffe31606fc19ed69a4" name="config/gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="57ac168e29be0a0bf07bd79e68cd4205" name="config/member_config.yml" role="data" />
    <file baseinstalldir="/" md5sum="e93c19f59130b79c9a5c84690e23ec54" name="config/profile_gadget.yml" role="data" />
-   <file baseinstalldir="/" md5sum="0c0df5409ce19cd4e390adcb00074b94" name="config/doctrine/schema.yml" role="data" />
-   <file baseinstalldir="/" md5sum="287cfbd36e51060dcca63338ad37c029" name="data/fixtures/000_revision.yml" role="data" />
+   <file baseinstalldir="/" md5sum="3c8f7e59b09daa828f14dacab9a18e51" name="config/doctrine/schema.yml" role="data" />
+   <file baseinstalldir="/" md5sum="5e8d702e482c655740604b3e0783e87b" name="data/fixtures/000_revision.yml" role="data" />
    <file baseinstalldir="/" md5sum="8646cfb38ab4bf09acc159b44b9bc5f4" name="data/fixtures/010_navigation.yml" role="data" />
    <file baseinstalldir="/" md5sum="e89e1fbea5dc9f554a3e721df5eb7ec8" name="data/fixtures/020_gadget.yml" role="data" />
    <file baseinstalldir="/" md5sum="f5ccf83f3e168fa8a4102a65ff1681ec" name="data/migrations/1.0.0/001_add_blog_rss_cache_table.php" role="data" />
    <file baseinstalldir="/" md5sum="716de91647d31ee61dc667477a19869f" name="data/migrations/1.0.0/002_add_index_to_blog_rss_cache.php" role="data" />
    <file baseinstalldir="/" md5sum="b4c4216452a38a6e21c1ed4c309c9a58" name="data/migrations/1.0.2/003_add_index_to_blog_rss_cache.php" role="data" />
+   <file baseinstalldir="/" md5sum="1735d28d9dd1e4dd9d5de6437cb94eca" name="data/migrations/1.0.3/004_add_blog_rss_cache_ondelete_cascade.php" role="data" />
    <file baseinstalldir="/" md5sum="8217b49f7f724c355caa3d2bf85aa7e5" name="i18n/messages.ja.xml" role="data" />
    <file baseinstalldir="/" md5sum="c4c960728d62ebd1b61a4ea898befe33" name="lib/opBlogPlugin.class.php" role="data" />
    <file baseinstalldir="/" md5sum="85279c3926b2398c5c042c526b1d265b" name="lib/filter/doctrine/PluginBlogRssCacheFormFilter.class.php" role="data" />
@@ -66,12 +81,14 @@
    <file baseinstalldir="/" md5sum="6a288744d189c9c44ec553ca71c4efb5" name="lib/task/openpneUpdateBlogRssCacheTask.class.php" role="data" />
    <file baseinstalldir="/" md5sum="2377070dba7169692470a162614b8b29" name="lib/vendor/LICENSE.txt" role="data" />
    <file baseinstalldir="/" md5sum="344d74567938d7238ed3a37de406c3da" name="lib/vendor/simplepie.php" role="data" />
-   <file baseinstalldir="/" md5sum="d460b44aecd15536876489abe4bb6fe5" name="test/bootstrap/database.php" role="data" />
+   <file baseinstalldir="/" md5sum="a7671dba689e1bb0e8fc2ee3771caca3" name="test/bootstrap/database.php" role="data" />
    <file baseinstalldir="/" md5sum="652a0d72910be1a5786698aaf5b9b508" name="test/bootstrap/functional.php" role="data" />
    <file baseinstalldir="/" md5sum="b6e69bd4c5958def80bc622b1e8d15b2" name="test/bootstrap/unit.php" role="data" />
    <file baseinstalldir="/" md5sum="a80d815dd08913a843c9abe55b0af72c" name="test/bootstrap/util.php" role="data" />
-   <file baseinstalldir="/" md5sum="1e02b2ec1ca1f38a727b80abeac15718" name="test/fixtures/001_import_member.yml" role="data" />
-   <file baseinstalldir="/" md5sum="cdb2c98e710b2cd4617b80863191f790" name="test/functional/pc_frontend/blogActionTest.php" role="data" />
+   <file baseinstalldir="/" md5sum="5e08371f80945ceeaa76c38de84dcbea" name="test/fixtures/001_import_member.yml" role="data" />
+   <file baseinstalldir="/" md5sum="d04c08c8f6f5e278898f2e94cd071370" name="test/fixtures/002_import_blog_rss_cache.yml" role="data" />
+   <file baseinstalldir="/" md5sum="e89e1fbea5dc9f554a3e721df5eb7ec8" name="test/fixtures/003_import_gadget.yml" role="data" />
+   <file baseinstalldir="/" md5sum="00e6fbdf228be48e96194a349ec0723d" name="test/functional/pc_frontend/blogActionTest.php" role="data" />
    <file baseinstalldir="/" md5sum="177ea7cf3aaa6fd32fc6b2f1070acf6e" name="test/stub/01_fake_feed.xml" role="data" />
    <file baseinstalldir="/" md5sum="16c9fac101e04974a89e1d25094c7929" name="test/stub/02_fake_feed.xml" role="data" />
    <file baseinstalldir="/" md5sum="c06590f6b5d0dda184b4bc2bfff05dcd" name="test/stub/03_fake_feed.xml" role="data" />
@@ -87,11 +104,6 @@
    <pearinstaller>
     <min>1.4.0</min>
    </pearinstaller>
-   <package>
-    <name>symfony</name>
-    <channel>pear.symfony-project.com</channel>
-    <min>1.2.0</min>
-   </package>
   </required>
  </dependencies>
  <phprelease />
@@ -107,7 +119,9 @@
    </stability>
    <date>2009-05-28</date>
    <license>apache</license>
-   <notes>This plugin is now compatible with Doctrine</notes>
+   <notes>
+This plugin is now compatible with Doctrine
+   </notes>
   </release>
   <release>
    <version>
@@ -120,7 +134,9 @@
    </stability>
    <date>2010-02-02</date>
    <license>apache</license>
-   <notes>rss cache enabled</notes>
+   <notes>
+rss cache enabled
+   </notes>
   </release>
   <release>
    <version>
@@ -133,7 +149,9 @@
    </stability>
    <date>2010-03-08</date>
    <license>apache</license>
-   <notes>Fixed some bugs.</notes>
+   <notes>
+Fixed some bugs.
+   </notes>
   </release>
   <release>
    <version>
@@ -146,7 +164,24 @@
    </stability>
    <date>2010-07-26</date>
    <license>apache</license>
-   <notes>speed tuning and fixed task bug.</notes>
+   <notes>
+speed tuning and fixed task bug.
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>1.0.3</release>
+    <api>1.0.3</api>
+   </version>
+   <stability>
+    <release>stable</release>
+    <api>stable</api>
+   </stability>
+   <date>2013-12-12</date>
+   <license>apache</license>
+   <notes>
+Bug（バグ） #3473: opBlogPlugin を使用しているメンバーが退会しようとすると500エラーとなる
+   </notes>
   </release>
  </changelog>
 </package>
